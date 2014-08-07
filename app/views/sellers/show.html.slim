@@ -6,10 +6,6 @@ p
   strong= model_class.human_attribute_name(:name) + ':'
   br
   = @seller.name
-p
-  strong= model_class.human_attribute_name(:password_digest) + ':'
-  br
-  = @seller.password_digest
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), sellers_path, :class => 'btn'

@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806224008) do
+ActiveRecord::Schema.define(version: 20140806233413) do
+
+  create_table "buyers", force: true do |t|
+    t.string   "name"
+    t.integer  "balance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "operations", force: true do |t|
+    t.integer  "value"
+    t.text     "comment"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "operations", ["buyer_id"], name: "index_operations_on_buyer_id"
+  add_index "operations", ["seller_id"], name: "index_operations_on_seller_id"
 
   create_table "sellers", force: true do |t|
     t.string   "name"
