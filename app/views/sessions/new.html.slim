@@ -1,2 +1,21 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
+#signin.row
+  /strong = debug flash
+  /strong = debug @seller
+  /strong = debug params
+  .span6.offset3
+    h1 Вход
+
+    = form_for(:session, url: sessions_path) do |f|
+
+      = f.label :name
+        'Имя
+      = f.text_field :name
+
+      = f.label :password
+        'Пароль
+      = f.password_field :password
+
+      = f.submit "Войти", class: "btn btn-large btn-primary signin"
+
+    p= link_to "Зарегистрироваться", signup_path
+

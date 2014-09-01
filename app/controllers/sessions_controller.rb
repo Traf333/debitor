@@ -6,12 +6,15 @@ class SessionsController < ApplicationController
 
 
   def create
-    seller = Seller.find_by(name: params[:name])
-    if seller && seller.authenticate(params[:password])
-      session[:seller_id] = seller.id
-      redirect_to root_url, :notice => "Logged in!"
+    #raise params.inspect
+    seller = Seller.find_by(name: params[:session][:name])
+    #raise seller.inspect
+    if seller && seller.authenticate(params[:session][:password])
+
+      sign_in seller
+      redirect_to root_path, :notice => "Вход успешно выполнен"
     else
-      flash.now.alert = "Invalid email or password"
+      flash.now.alert = "Неправильное Имя или Пароль"
       render "new"
     end
   end
@@ -20,5 +23,10 @@ class SessionsController < ApplicationController
     session[:seller_id] = nil
     redirect_to root_url, :notice => "Logged out!"
   end
-  
+
+  #def destroy
+  #  sign_out
+  #  redirect_to root_url
+  #end
+
 end

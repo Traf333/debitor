@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806233413) do
+ActiveRecord::Schema.define(version: 20140901055817) do
 
   create_table "buyers", force: true do |t|
     t.string   "name"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20140806233413) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
+
+  add_index "sellers", ["remember_token"], name: "index_sellers_on_remember_token"
 
 end

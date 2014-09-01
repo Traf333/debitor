@@ -17,3 +17,14 @@
 body {
     margin-top: 60px;
 }
+
+.navbar-right {
+    float: right!important;
+}
+
+#signin
+    input.btn.signin {
+        display: block;
+}
+
+

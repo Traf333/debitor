@@ -30,10 +30,16 @@ html lang="en"
             span.icon-bar
           a.brand href="#"Debitor
           .container.nav-collapse
+            /= debug current_seller
             ul.nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              li= link_to "Продавцы", sellers_path
+              li= link_to "Покупатели", buyers_path
+              li= link_to "Операции", operations_path
+            ul.nav.navbar-nav.navbar-right
+              - if current_seller.present?
+                li= link_to "Продавец #{current_seller.name}", current_seller
+              li= link_to "Вход", signin_path
+              li= link_to "Выход", signout_path, method: "delete"
 
     .container
 
