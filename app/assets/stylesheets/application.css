@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require operations
  */
 
 body {
@@ -25,6 +26,12 @@ body {
 #signin
     input.btn.signin {
         display: block;
+}
+
+.selection {
+    margin-left: 180px;
+    margin-bottom: 20px;
+    display: block;
 }
 
 
