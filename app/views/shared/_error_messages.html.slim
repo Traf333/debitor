@@ -1,0 +1,4 @@
+- if @seller.errors.any?
+  .error-field
+    - @seller.errors.full_messages.each do |msg|
+      li= msg

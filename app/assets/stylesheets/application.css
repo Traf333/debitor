@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require operations
+ *= require sellers
  */
 
 body {
@@ -34,4 +35,23 @@ body {
     display: block;
 }
 
+.submit-bottons {
+    padding-left: 20px!important;
+    width: 240px;
+}
+
+.input-fields {
+    padding-left: 20px;
+}
+
+.input-fields
+    input {
+        margin-bottom: 10px;
+}
+
+.error-field {
+    background-color: rgba(235, 104, 104, 0.44);
+    width: 320px;
+    margin-bottom: 30px;
+}
 
