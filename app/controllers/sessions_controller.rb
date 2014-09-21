@@ -20,8 +20,9 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    session[:seller_id] = nil
-    redirect_to root_url, :notice => "Logged out!"
+    #session[:seller_id] = nil
+    sign_out
+    redirect_to root_url, :notice => "Выход успешно выполнен"
   end
 
   #def destroy

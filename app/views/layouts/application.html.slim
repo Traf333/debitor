@@ -38,15 +38,21 @@ html lang="en"
             ul.nav.navbar-nav.navbar-right
               - if current_seller.present?
                 li= link_to "Продавец #{current_seller.name}", current_seller
-              li= link_to "Вход", signin_path
-              li= link_to "Выход", signout_path, method: "delete"
+                li= link_to "Выход", signout_path, method: "delete"
+              - else
+                li= link_to "Вход", signin_path
+
+
 
     .container
 
       .row
         .span9
-          = bootstrap_flash
+          /= bootstrap_flash
+          - flash.each do |key, value|
+            div class="alert alert-#{ key}"#{value}
           = yield
+
         .span3
           .well.sidebar-nav
             h3 Sidebar

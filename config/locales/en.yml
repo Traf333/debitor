@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      seller:
+        password_confirmation: "Пароли"
+        password: "Пароль"
+    errors:
+      messages:
+        confirmation: " не совпадают!"
+        blank: " не может быть пустым"
+#  activerecord:
+#    errors:
+#      messages:
+#        confirmation: "does not match"

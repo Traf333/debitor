@@ -28,9 +28,10 @@ class SellersController < ApplicationController
 
     respond_to do |format|
       if @seller.save
-        format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
+        format.html { redirect_to @seller, notice: 'Новый продавец успешно зарегистрирован' }
         format.json { render :show, status: :created, location: @seller }
       else
+        #flash.now.alert = "Неправильное Имя или Пароль"
         format.html { render :new }
         format.json { render json: @seller.errors, status: :unprocessable_entity }
       end
