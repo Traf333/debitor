@@ -1,4 +1,6 @@
 class Operation < ActiveRecord::Base
-  belongs_to :buyer
+
+
+  belongs_to :card
   belongs_to :seller
 end

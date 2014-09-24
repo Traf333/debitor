@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'home_pages/home'
-
-  resources :operations
-
-  resources :sellers
-
-  match '/signup', to: 'sellers#new', via: 'get'
-
-  resources :buyers
-
   root 'home_pages#home'
 
 
-
+  resources :cards
+  resources :operations
+  resources :sellers
+  resources :buyers
   resources :sessions, only: [:new, :create, :destroy]
+
+
+
+  match '/signup', to: 'sellers#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 

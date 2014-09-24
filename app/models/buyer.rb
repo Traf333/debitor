@@ -1,3 +1,5 @@
 class Buyer < ActiveRecord::Base
-  has_many :operations
+  has_one :card
+
+  validates_presence_of :card
 end

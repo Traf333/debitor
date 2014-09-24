@@ -1,9 +1,17 @@
 class Seller < ActiveRecord::Base
-  before_create :create_remember_token
+
+
+  has_secure_password
 
   has_many :operations
-  has_secure_password
+  has_many :cards, through: :operations
+
+  before_create :create_remember_token
+
+
   validates_presence_of :password, :name
+
+
 
   def Seller.new_remember_token
     SecureRandom.urlsafe_base64

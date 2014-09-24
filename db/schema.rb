@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901055817) do
+ActiveRecord::Schema.define(version: 20140924071057) do
 
   create_table "buyers", force: true do |t|
     t.string   "name"
@@ -20,16 +20,29 @@ ActiveRecord::Schema.define(version: 20140901055817) do
     t.datetime "updated_at"
   end
 
-  create_table "operations", force: true do |t|
-    t.integer  "value"
-    t.text     "comment"
+  create_table "cards", force: true do |t|
+    t.float    "count"
+    t.string   "identifier"
     t.integer  "buyer_id"
-    t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "operations", ["buyer_id"], name: "index_operations_on_buyer_id"
+  add_index "cards", ["buyer_id"], name: "index_cards_on_buyer_id"
+  add_index "cards", ["identifier"], name: "index_cards_on_identifier", unique: true
+
+  create_table "operations", force: true do |t|
+    t.integer  "value"
+    t.text     "comment"
+    t.integer  "seller_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "card_id"
+  end
+
+  add_index "operations", ["card_id", "seller_id"], name: "index_operations_on_card_id_and_seller_id", unique: true
+  add_index "operations", ["card_id"], name: "index_operations_on_card_id"
+  add_index "operations", ["seller_id", "card_id"], name: "index_operations_on_seller_id_and_card_id", unique: true
   add_index "operations", ["seller_id"], name: "index_operations_on_seller_id"
 
   create_table "sellers", force: true do |t|
