@@ -1,0 +1,23 @@
+h1 Текущая операция
+= render 'shared/form_operation'
+
+h1 Список выполненных операций
+table class="table table-striped"
+  thead
+    tr
+      /th= model_class.human_attribute_name(:id)
+      th Продавец
+      th Номер карты
+      th Сумма
+      th Время
+      th Комментарий
+
+  tbody
+    - @operations.each do |operation|
+      tr
+        td= link_to operation.id, operation_path(operation)
+        td= operation.seller.name if operation.seller.present?
+        td= operation.buyer.card_id
+        td= operation.value
+        td=l operation.created_at
+        td= operation.comment
