@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-
+  before_filter :signed_in_seller, except: [:new, :create]
   def new
-
+    
   end
 
 
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     #session[:seller_id] = nil
     sign_out
-    redirect_to root_url, :notice => "Выход успешно выполнен"
+    redirect_to signin_path, :notice => "Выход успешно выполнен"
   end
 
   #def destroy

@@ -30,6 +30,11 @@ en:
       messages:
         confirmation: " не совпадают!"
         blank: " не может быть пустым"
+
+
+  time:
+    formats:
+      default: '%H:%M %d/%m/%Y'
 #  activerecord:
 #    errors:
 #      messages:
