@@ -21,26 +21,28 @@ html lang="en"
 
 
   body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand href="#"Debitor
-          .container.nav-collapse
-            /= debug current_seller
-            ul.nav
-              li= link_to "Продавцы", sellers_path
-              li= link_to "Покупатели", buyers_path
-              li= link_to "Операции", operations_path
-            ul.nav.navbar-nav.navbar-right
-              - if current_seller.present?
-                li= link_to "Продавец #{current_seller.name}", current_seller
-                li= link_to "Выход", signout_path, method: "delete"
-              - else
-                li= link_to "Вход", signin_path
+    - unless current_seller.blank?
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.brand href="#"Debitor
+            .container.nav-collapse
+              /= debug current_seller
+                /// для администратора
+              /ul.nav
+              /  li= link_to "Продавцы", sellers_path
+              /  li= link_to "Покупатели", buyers_path
+              /  li= link_to "Операции", operations_path
+              ul.nav.navbar-nav.navbar-right
+                - if current_seller.present?
+                  li= link_to "Продавец #{current_seller.name}", current_seller
+                  li= link_to "Выход", signout_path, method: "delete"
+                - else
+                  li= link_to "Вход", signin_path
 
 
 
@@ -53,14 +55,15 @@ html lang="en"
             div class="alert alert-#{ key}"#{value}
           = yield
 
-        .span3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+        - unless current_seller.blank?
+          .span3
+            .well.sidebar-nav
+              h3= current_seller.name
+              ul.nav.nav-list
+                li.nav-header
+                li количество операций
+                li общая сумма
+                /li= link_to "Link 3", "/path3"
     
       footer
-        p &copy; Company 2014
+

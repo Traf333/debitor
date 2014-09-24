@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home_pages/home'
+
   resources :operations
 
   resources :sellers
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :buyers
 
-  root 'sellers#index'
+  root 'home_pages#home'
 
 
 

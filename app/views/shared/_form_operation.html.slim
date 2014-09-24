@@ -1,0 +1,16 @@
+h1
+= form_for(:operation, url: operations_path) do |f|
+
+  = f.label :sum
+    'Сумма
+  = f.number_field :sum
+
+  = f.label :card_number
+    'Номер карты
+  /= f.search_field(:buyer, :card_number)
+
+  = f.label :comment
+    'Комментарий
+  = f.text_field :comment
+
+  = f.submit "Оплатить", class: "btn btn btn-primary"
