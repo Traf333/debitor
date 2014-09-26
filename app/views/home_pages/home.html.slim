@@ -12,12 +12,12 @@ table class="table table-striped"
       th Время
       th Комментарий
 
-  tbody
-    - @operations.each do |operation|
-      tr
-        td= link_to operation.id, operation_path(operation)
-        td= operation.seller.name if operation.seller.present?
-        td= operation.buyer.card_id
-        td= operation.value
-        td=l operation.created_at
-        td= operation.comment
+  /tbody
+  /  - @operations.each do |operation|
+  /    tr
+  /      td= link_to operation.id, operation_path(operation)
+  /      td= operation.seller.name if operation.seller.present?
+  /      td= operation.buyer.card_id
+  /      td= operation.value
+  /      td=l operation.created_at
+  /      td= operation.comment

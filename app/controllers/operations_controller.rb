@@ -24,6 +24,7 @@ class OperationsController < ApplicationController
   # POST /operations
   # POST /operations.json
   def create
+    #raise params.inspect
     @operation = Operation.new(operation_params)
 
     respond_to do |format|
@@ -69,6 +70,6 @@ class OperationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def operation_params
-      params.require(:operation).permit(:value, :comment, :buyer_id, :seller_id)
+      params.require(:operation).permit(:value, :comment, :card_id, :seller_id)
     end
 end

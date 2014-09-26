@@ -1,6 +1,6 @@
 = simple_form_for @operation, :html => { :class => "form-horizontal" } do |f|
-  = f.select :buyer, options_from_collection_for_select(Buyer.all, :id, :name), {prompt: "Выберете покупателя"}, {class:'selection'}
-  = f.select :seller, options_from_collection_for_select(Seller.all, :id, :name), {prompt: "Выберете продавца"}, {class:'selection'}
+  = f.select :card_id, options_from_collection_for_select(Card.all, :id, :identifier), {prompt: "Выберете карту"}, {class:'selection'}
+  = f.select :seller_id, options_from_collection_for_select(Seller.all, :id, :name), {prompt: "Выберете продавца"}, {class:'selection'}
 
   = f.input :value
   = f.input :comment

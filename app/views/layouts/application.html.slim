@@ -61,8 +61,8 @@ html lang="en"
               h3= current_seller.name
               ul.nav.nav-list
                 li.nav-header
-                li количество операций
-                li общая сумма
+                li Количество выполненных операций: #{current_seller.operations.count}
+                li Общая сумма: #{current_seller.operations.pluck(:value).sum}
                 /li= link_to "Link 3", "/path3"
     
       footer

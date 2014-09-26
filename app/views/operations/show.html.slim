@@ -13,11 +13,11 @@ p
 p
   strong= model_class.human_attribute_name(:buyer_id) + ':'
   br
-  = @operation.buyer_id
+  = Buyer.find_by(id: @operation.card.buyer_id).name
 p
   strong= model_class.human_attribute_name(:seller_id) + ':'
   br
-  = @operation.seller_id
+  = Seller.find_by(id: @operation.seller_id).name
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), operations_path, :class => 'btn'
