@@ -32,10 +32,11 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to root_path, notice: 'Operation was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Операция успешно сохранена' }
         format.json { render :show, status: :created, location: @operation }
       else
-        format.html { render :new }
+        flash[:error] = 'Ошибка при сохранении, проверьте правильность введенных данных'
+        format.html { redirect_to root_path }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
     end

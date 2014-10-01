@@ -1,5 +1,5 @@
 h1 Текущая операция
-= simple_form_for (@operation) do |f|
+= simple_form_for @operation do |f|
   = f.input :value, label: "Сумма"
 
 
@@ -9,7 +9,7 @@ h1 Текущая операция
   = f.input :comment, label: "Комментарий"
 
 
-  = f.button :submit, label: "Оплатить", class: "btn btn btn-primary"
+  = f.button :submit, value: "Оплатить", class: "btn btn btn-primary"
 
 h1 Список выполненных операций
 table class="table table-striped"
