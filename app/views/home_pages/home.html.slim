@@ -1,23 +1,33 @@
 h1 Текущая операция
-= render 'shared/form_operation'
+= simple_form_for (@operation) do |f|
+  = f.input :value, label: "Сумма"
+
+
+  = f.association :card, label_method: :identifier, value_method: :id, include_blank: true, input_html: { class: 'chosen-select' }, label: "Номер карты"
+
+
+  = f.input :comment, label: "Комментарий"
+
+
+  = f.button :submit, label: "Оплатить", class: "btn btn btn-primary"
 
 h1 Список выполненных операций
 table class="table table-striped"
   thead
     tr
-      /th= model_class.human_attribute_name(:id)
-      th Продавец
-      th Номер карты
-      th Сумма
-      th Время
+      th №
+      th Стоимость
       th Комментарий
+      th Номер карты
+      th Покупатель
+      th Дата покупки
 
-  /tbody
-  /  - @operations.each do |operation|
-  /    tr
-  /      td= link_to operation.id, operation_path(operation)
-  /      td= operation.seller.name if operation.seller.present?
-  /      td= operation.buyer.card_id
-  /      td= operation.value
-  /      td=l operation.created_at
-  /      td= operation.comment
+  tbody
+    - @operations.each_with_index do |operation, i|
+      tr
+        td= (i+1)
+        td= operation.value
+        td= operation.comment
+        td= operation.card.try(:identifier)
+        td= operation.card.buyer.name
+        td=l operation.created_at

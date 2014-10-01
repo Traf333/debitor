@@ -1,7 +1,7 @@
 = simple_form_for @card, :html => { :class => "form-horizontal" } do |f|
-  = f.input :count
-  = f.input :identifier
-  = f.input :buyer_id
+  = f.input :count, label: "Счет"
+  = f.input :identifier, label: "Номер карты"
+  = f.association :buyer, label_method: :name, value_method: :id, label: "Покупатель"
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '

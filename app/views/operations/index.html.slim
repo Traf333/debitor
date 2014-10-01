@@ -17,8 +17,8 @@ table class="table table-striped"
         td= link_to operation.id, operation_path(operation)
         td= operation.value
         td= operation.comment
-        td= Buyer.find_by(id: operation.card.buyer_id).name
-        td= Seller.find_by(id: operation.seller_id).name
+        td= operation.card.buyer.name
+        td= operation.seller.name if operation.seller.present?
         td=l operation.created_at
         td
           = link_to 'Редактировать', edit_operation_path(operation), :class => 'btn btn-mini'

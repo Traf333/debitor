@@ -16,9 +16,12 @@ gem 'coffee-rails', '~> 4.0.0'
 
 
 gem 'slim-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '~> 2.2.8'
 gem 'will_paginate'
 gem 'simple_form'
+
+
+gem 'chosen-rails'
 
 
 # Use jquery as the JavaScript library

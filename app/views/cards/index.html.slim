@@ -16,7 +16,7 @@ table class="table table-striped"
         td= link_to card.id, card_path(card)
         td= card.count
         td= card.identifier
-        td= card.buyer_id
+        td= card.buyer.name
         td=l card.created_at
         td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_card_path(card), :class => 'btn btn-mini'
