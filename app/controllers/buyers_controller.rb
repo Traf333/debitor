@@ -15,6 +15,7 @@ class BuyersController < ApplicationController
   # GET /buyers/new
   def new
     @buyer = Buyer.new
+
   end
 
   # GET /buyers/1/edit

@@ -23,6 +23,7 @@ gem 'simple_form'
 
 gem 'chosen-rails'
 
+gem 'annotate'
 
 
 # Use jquery as the JavaScript library

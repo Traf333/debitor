@@ -7,7 +7,7 @@ table class="table table-striped"
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:count)
       th= model_class.human_attribute_name(:identifier)
-      th= model_class.human_attribute_name(:buyer_id)
+      /th= model_class.human_attribute_name(:buyer_id)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -16,7 +16,7 @@ table class="table table-striped"
         td= link_to card.id, card_path(card)
         td= card.count
         td= card.identifier
-        td= card.buyer.name
+        /td= card.buyer.name
         td=l card.created_at
         td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_card_path(card), :class => 'btn btn-mini'

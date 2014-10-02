@@ -1,6 +1,6 @@
 h1 Текущая операция
 = simple_form_for @operation do |f|
-  = f.input :value, label: "Сумма"
+  = f.input :value, label: "Сумма", required: true
 
 
   = f.association :card, label_method: :identifier, value_method: :id, include_blank: true, input_html: { class: 'chosen-select' }, label: "Номер карты"

@@ -1,6 +1,14 @@
 = simple_form_for @buyer, :html => { :class => "form-horizontal" } do |f|
-  = f.input :name
-  = f.input :balance
+  = f.input :name, required: true
+  = f.input :balance, required: true
+  .control-group
+    = label_tag :card, "Номер карты", class: 'control-label'
+    .controls= select_tag :card, options_from_collection_for_select(Card.all, :id, :identifier), include_blank: true, class: 'chosen-select'
+
+  /= f.association :card, label_method: :identifier, value_method: :id, label: "Покупатель"
+  /= f.simple_fields_for :card do |b|
+  /  = b.select :id, Card.all, :id, :identifier, { include_blank: true} , { class: 'chosen-select' }
+  /= f.association :card, collection: Card.order(:identifier), include_blank: true, input_html: { class: 'chosen-select' }, label: "Номер карты"
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     '
