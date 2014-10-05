@@ -6,7 +6,8 @@ table class="table table-striped"
     tr
       th= model_class.human_attribute_name(:id)
       th Имя
-      th Баланс
+      th Номер карты
+      th Счет (руб)
       th Дата регистрации
       th Действия
   tbody
@@ -14,12 +15,13 @@ table class="table table-striped"
       tr
         td= link_to buyer.id, buyer_path(buyer)
         td= buyer.name
-        td= buyer.balance
+        td= buyer.card.identifier
+        td= buyer.card.count
         td=l buyer.created_at
         td
           = link_to 'Редактировать', edit_buyer_path(buyer), :class => 'btn btn-mini'
           '
-          = link_to 'Удалить', buyer_path(buyer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to 'Удалить', buyer_path(buyer), :method => :delete, :data => { :confirm => 'Вы уверены?'}, :class => 'btn btn-mini btn-danger'
 
 = link_to 'Создать нового покупателя', new_buyer_path, :class => 'btn btn-primary'
 

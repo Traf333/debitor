@@ -10,6 +10,8 @@
 #
 
 class Buyer < ActiveRecord::Base
+  validates :name, presence:  true
+
   has_one :card
   accepts_nested_attributes_for :card
 

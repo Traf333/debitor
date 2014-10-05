@@ -25,11 +25,18 @@ class BuyersController < ApplicationController
   # POST /buyers
   # POST /buyers.json
   def create
+    #raise params.inspect
     @buyer = Buyer.new(buyer_params)
-
+    if params[:card].present? && params[:count].present?
+      @buyer.card = Card.find(params[:card])
+      @buyer.card.count = params[:count]
+    else
+      flash[:error] = 'Ошибка при сохранении, все данные по карте должны быть указаны'
+    end
+    #raise params.inspect
     respond_to do |format|
       if @buyer.save
-        format.html { redirect_to @buyer, notice: 'Buyer was successfully created.' }
+        format.html { redirect_to @buyer, notice: 'Новый покупатель успешно создан.' }
         format.json { render :show, status: :created, location: @buyer }
       else
         format.html { render :new }
@@ -43,7 +50,7 @@ class BuyersController < ApplicationController
   def update
     respond_to do |format|
       if @buyer.update(buyer_params)
-        format.html { redirect_to @buyer, notice: 'Buyer was successfully updated.' }
+        format.html { redirect_to @buyer, notice: 'Информация успешно обновлена.' }
         format.json { render :show, status: :ok, location: @buyer }
       else
         format.html { render :edit }
@@ -57,7 +64,7 @@ class BuyersController < ApplicationController
   def destroy
     @buyer.destroy
     respond_to do |format|
-      format.html { redirect_to buyers_url, notice: 'Buyer was successfully destroyed.' }
+      format.html { redirect_to buyers_url, notice: 'Покупатель был удален.' }
       format.json { head :no_content }
     end
   end

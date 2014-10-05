@@ -17,7 +17,7 @@ table class="table table-striped"
         td= link_to operation.id, operation_path(operation)
         td= operation.value
         td= operation.comment
-        td= operation.card.buyer.name
+        td= operation.card.buyer.name if operation.card.buyer.present?
         td= operation.seller.name if operation.seller.present?
         td=l operation.created_at
         td
