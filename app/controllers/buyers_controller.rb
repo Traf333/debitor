@@ -25,11 +25,10 @@ class BuyersController < ApplicationController
   # POST /buyers
   # POST /buyers.json
   def create
-    #raise params.inspect
     @buyer = Buyer.new(buyer_params)
-    if params[:card].present? && params[:count].present?
+    if params[:card].present? && params[:limit].present?
       @buyer.card = Card.find(params[:card])
-      @buyer.card.count = params[:count]
+      @buyer.card.limit = params[:limit]
     else
       flash[:error] = 'Ошибка при сохранении, все данные по карте должны быть указаны'
     end

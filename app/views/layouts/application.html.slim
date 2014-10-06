@@ -21,49 +21,15 @@ html lang="en"
 
 
   body
-    - unless current_seller.blank?
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container
-            a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.brand href=root_path Debitor
-            .container.nav-collapse
-              /= debug current_seller
-                /// для администратора
-              /ul.nav
-              /  li= link_to "Продавцы", sellers_path
-              /  li= link_to "Покупатели", buyers_path
-              /  li= link_to "Операции", operations_path
-              ul.nav.navbar-nav.navbar-right
-                - if current_seller.present?
-                  li= link_to "Продавец #{current_seller.name}", root_path
-                  li= link_to "Выход", signout_path, method: "delete"
-                - else
-                  li= link_to "Вход", signin_path
-
-
-
-    .container
-
+    = render 'layouts/header' if current_seller.present?
+    main.container
       .row
         .span9
           /= bootstrap_flash
           - flash.each do |key, value|
             div class="alert alert-#{ key}"#{value}
           = yield
+        = render 'layouts/sleller_info' if current_seller.present?
 
-        - unless current_seller.blank?
-          .span3
-            .well.sidebar-nav
-              h3= current_seller.name
-              ul.nav.nav-list
-                li.nav-header
-                li Количество выполненных операций: #{current_seller.operations.count}
-                li Общая сумма: #{current_seller.operations.pluck(:value).sum}
-                /li= link_to "Link 3", "/path3"
-    
-      footer
+    footer
 

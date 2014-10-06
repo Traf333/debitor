@@ -24,14 +24,13 @@ class OperationsController < ApplicationController
   # POST /operations
   # POST /operations.json
   def create
-    #raise params.inspect
     @operation = Operation.new(operation_params)
     @operation.seller_id = current_seller.id
 
     #raise params.inspect
 
     respond_to do |format|
-      if @operation.save
+      if @operation.check_and_save
         format.html { redirect_to root_path, notice: 'Операция успешно сохранена' }
         format.json { render :show, status: :created, location: @operation }
       else

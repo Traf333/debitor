@@ -1,0 +1,8 @@
+aside.span3
+  .well.sidebar-nav
+    h3= current_seller.name
+    ul.nav.nav-list
+      li.nav-header
+      li Количество выполненных операций: #{current_seller.operations.count}
+      li Общая сумма: #{current_seller.total_for_day}
+      /li= link_to "Link 3", "/path3"

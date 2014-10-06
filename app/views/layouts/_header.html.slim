@@ -1,0 +1,23 @@
+header.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand href=root_path Debitor
+      .container.nav-collapse
+        /= debug current_seller
+          /// для администратора
+        - if current_seller.admin?
+          ul.nav
+            li= link_to "Продавцы", sellers_path
+            li= link_to "Покупатели", buyers_path
+            li= link_to "Операции", operations_path
+            li= link_to "Карты", cards_path
+          ul.nav.navbar-nav.navbar-right
+            - if current_seller.present?
+              li= link_to "Продавец #{current_seller.name}", root_path
+              li= link_to "Выход", signout_path, method: "delete"
+            - else
+              li= link_to "Вход", signin_path

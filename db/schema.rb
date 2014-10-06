@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924071057) do
+ActiveRecord::Schema.define(version: 20141006071142) do
 
   create_table "buyers", force: true do |t|
     t.string   "name"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(version: 20140924071057) do
     t.integer  "buyer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "limit"
   end
 
   add_index "cards", ["buyer_id"], name: "index_cards_on_buyer_id"
   add_index "cards", ["identifier"], name: "index_cards_on_identifier", unique: true
 
   create_table "operations", force: true do |t|
-    t.integer  "value"
+    t.float    "value"
     t.text     "comment"
     t.integer  "seller_id"
     t.datetime "created_at"

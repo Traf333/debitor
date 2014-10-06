@@ -16,4 +16,15 @@ class Card < ActiveRecord::Base
   has_many :operations
   has_many :sellers, through: :operations
 
+  delegate :name, to: :buyer, prefix: true, allow_nil: true
+
+  validates_numericality_of :limit, :count
+
+  def full_info
+    "#{identifier}-#{buyer_name}  ---  #{balance}  ---"
+  end
+
+  def balance
+    limit - count
+  end
 end

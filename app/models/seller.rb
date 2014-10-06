@@ -33,6 +33,18 @@ class Seller < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def admin?
+    true
+  end
+
+  def operations_count
+    operations.today.size
+  end
+
+  def total_for_day
+    operations.today.map(&:value).sum
+  end
+
   private
 
   def create_remember_token
